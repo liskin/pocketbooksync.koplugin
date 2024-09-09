@@ -31,10 +31,34 @@ end
 
 local profile_id = GetCurrentProfileId()
 
+local function scanHomeDir()
+    local task = inkview.FindTaskByAppName("scanner.app")
+    if task ~= -1 then
+        local parameters = "-scan:" .. G_reader_settings:readSetting("home_dir")
+        inkview.SendRequestTo(
+            task, ffi.C.REQ_OPENBOOK,
+            ffi.cast("void *", ffi.new("const char *", parameters)), #parameters + 1,
+            0, 2000
+        )
+    end
+end
+
 local PocketbookSync = WidgetContainer:extend{
     name = "pocketbooksync",
     is_doc_only = false,
 }
+
+function PocketbookSync:init()
+    self.ui.menu:registerToMainMenu(self)
+end
+
+function PocketbookSync:addToMainMenu(menu_items)
+    menu_items.pocketbook_sync = {
+        sorting_hint = "tools",
+        text = "PocketBook - Scan Home Dir",
+        callback = scanHomeDir,
+    }
+end
 
 function PocketbookSync:immediateSync()
     UIManager:unschedule(self.doSync)
