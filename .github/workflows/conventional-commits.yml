@@ -19,6 +19,7 @@ jobs:
         with:
           # checkout pull request HEAD commit instead of merge commit
           ref: ${{ case(github.event_name == 'pull_request', github.event.pull_request.head.sha, '') }}
+          fetch-depth: 0
           persist-credentials: false
       - name: fetch before
         if: github.event_name == 'push'
