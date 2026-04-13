@@ -4,6 +4,7 @@
     ".": {}
   },
   "release-type": "simple",
+  "pull-request-title-pattern": "chore: release ${version}",
   "changelog-sections": [
     {"type": "docs", "section": "Documentation"},
     {"type": "feat", "section": "Features"},
