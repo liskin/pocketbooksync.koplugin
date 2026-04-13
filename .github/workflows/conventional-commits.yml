@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/developerc286/conventional_commits_linter:0.17.1
+    env:
+      base_before: ${{ case(github.event_name == 'pull_request', github.event.pull_request.base.sha, github.event.before) }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
@@ -21,14 +23,9 @@ jobs:
           ref: ${{ case(github.event_name == 'pull_request', github.event.pull_request.head.sha, '') }}
           fetch-depth: 0
           persist-credentials: false
-      - name: fetch before
-        if: github.event_name == 'push'
-        env:
-          sha: ${{ github.event.before }}
+      - name: fetch base/before
         run: |
-          git fetch origin "$sha"
+          git fetch origin "$base_before"
       - name: conventional_commits_linter
-        env:
-          sha: ${{ case(github.event_name == 'pull_request', github.event.pull_request.base.sha, github.event.before) }}
         run: |
-          conventional_commits_linter --history-mode all --type angular "$sha"
+          conventional_commits_linter --history-mode all --type angular "$base_before"
