@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.1](https://github.com/liskin/pocketbooksync.koplugin/compare/v1.0.0...v1.0.1) (2026-04-14)
+
+
+### Other
+
+* configure release-please ([958cf0d](https://github.com/liskin/pocketbooksync.koplugin/commit/958cf0d8578615a90270a1936b2cbc4c604856bb))
+* enable dependabot for GH Actions ([380a590](https://github.com/liskin/pocketbooksync.koplugin/commit/380a5900066c1941ccad8c40ed523acd625c190e))
+* lint commits ([f4723f3](https://github.com/liskin/pocketbooksync.koplugin/commit/f4723f33a6e3e6819e2f6149ed36d8a1151eef69))
+* publish zip release asset ([168c7e1](https://github.com/liskin/pocketbooksync.koplugin/commit/168c7e17bb17c75469f2a1a61474ff27d580ccbe))
+* release 1.0.0 ([99b703b](https://github.com/liskin/pocketbooksync.koplugin/commit/99b703b6e00374b86e006ab29210b185d6e0da2a))
+
 ## 1.0.0 (2026-04-13)
 
 
